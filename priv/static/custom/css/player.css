@@ -1,0 +1,65 @@
+#player_awning::before {
+  display: none;
+  content: attr(data-content);
+  width: 50%;
+  padding: 0px 10px;
+  margin: 1% 25%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 10px;
+  color: #ecf0f1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  text-align: center;
+  font-size: 1rem;
+  overflow: hidden;
+
+  -webkit-user-select: none;
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
+  background-color: rgba(78, 78, 78, 0.72);
+}
+
+#player_awning:hover::before {
+  display: block;
+  animation-name: animate_in;
+  animation-duration: 0.4s;
+}
+
+@keyframes animate_in {
+  from {top: -100px;}
+  to {top: 0px;}
+}
+
+/* Controls START */
+.controls1 .progress_bar {
+  display: inline-block;
+  width: auto;
+  height: 5px;
+  margin: 0px 1%;
+  background-color: black;
+}
+
+.controls1 .progress_slider {
+  flex-grow: 20;
+  padding: 0px 10px;
+}
+
+.icon {
+  color: hsl(0, 0%, 95%);
+  margin: 0px 10px;
+  flex-grow: 1;
+  transition: 0s all;
+}
+
+.icon:hover {
+  cursor: pointer;
+  text-shadow: 0px 0px 3px hsl(180, 100%, 97%);
+}
+
+.fa-volume-mute:hover {
+  text-shadow: 0px 0px 3px hsl(0, 88%, 61%);
+}
+/* Controls END */

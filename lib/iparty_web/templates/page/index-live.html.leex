@@ -1,0 +1,18 @@
+<div class="flex relative rounded shadow h-screen bg-gray-100 text-gray-900 dark:bg-erie-black-800 dark:text-sage-500 mx-4 my-2">
+  <!-- Toogle 2D/3D -->
+  <div class="absolute right-0 bottom-0 mr-1 mb-1 hidden lg:block z-10" phx-update="ignore">
+    <div class="flex items-center border border-gray-400 bg-gray-200 pl-2 py-2 pr-5 rounded-md text-gray-500 dark:bg-erie-black-800 dark:border-sage-500 dark:text-sage-300 font-bold select-none">
+      Toogle 3D
+      <input type="checkbox" id="toogle-3d" phx-hook="IndexPage">
+    </div>
+  </div>
+  <!-- Landing -->
+  <div class="w-full h-full">
+    <%= case @landing do %>
+     <% "2d" -> %>
+       <%= live_component @socket, IpartyWeb.Live.Component.Index.TwoD, id: "2d" %>
+     <% "3d" -> %>
+      <%= live_component @socket, IpartyWeb.Live.Component.Index.ThreeD, id: "3d" %>
+    <% end %>
+  </div>
+</div>

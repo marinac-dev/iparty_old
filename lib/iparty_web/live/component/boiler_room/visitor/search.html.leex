@@ -1,0 +1,29 @@
+<div class="flex justify-center items-start rounded shadow w-full lg:w-1/3 mt-4 lg:mt-0" id="room-search">
+  <div class="flex flex-col justify-start items-center bg-gray-200 dark:bg-erie-black-600 w-full rounded pt-4 h-128">
+    <!-- Search bar -->
+    <div class="flex flex-row justify-center items-center w-full my-4">
+      <%= f = form_for :search_form, "#", id: "search-form", phx_target: "#room-search", phx_hook: "SearchSuggest", phx_submit: "search", class: "flex flex-row justify-center items-center w-11/12" %>
+        <div class="flex h-8 rounded-full">
+          <%= search_input f, :query, value: @search, id: "search-input", placeholder: "Search for a song", autocomplete: "off", list: "suggestions", inputmode: "search",
+            class: "appearance-none bg-gray-100 rounded-l-full dark:bg-erie-black-500 pl-3 text-gray-800 dark:text-sage-500 dark:placeholder-current focus:outline-none" %>
+          <!-- Search button -->
+          <button type="submit" class="cursor-pointer h-8 w-10 rounded-r-full bg-blue-400 text-gray-800 opacity-75 hover:opacity-100 hover:bg-blue-500 dark:bg-sage-500 dark:hover:bg-sage-700 focus:outline-none">
+            <i class="fad fa-search"></i>
+          </button>
+        </div>
+        <datalist id="suggestions">
+          <%= for suggestion <- @suggestions do %>
+            <option value="<%= suggestion %>"><%= suggestion %></option>
+          <% end %>
+        </datalist>
+      </form>
+    </div>
+
+    <!-- Search resuls -->
+    <div class="flex flex-wrap justify-center items-start overflow-y-auto my-2">
+      <%= for item <- @search_results do %>
+        <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Owner.SearchResult, item: item %>
+      <% end %>
+    </div>
+  </div>
+</div>

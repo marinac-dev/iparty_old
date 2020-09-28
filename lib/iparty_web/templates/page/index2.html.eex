@@ -1,0 +1,4 @@
+<div class="flex rounded shadow h-screen bg-gray-100 text-gray-900 dark:bg-erie-black-800 dark:text-sage-500 mx-4 my-2 py-2 px-3">
+  <div style="height: 100%; width: 100%" id="logo"></div>
+</div>
+<script type="module" src="<%= Routes.static_path(@conn, "/custom/js/model.js") %>"></script>

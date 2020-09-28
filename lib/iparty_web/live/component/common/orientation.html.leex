@@ -1,0 +1,23 @@
+<div class="lg:hidden w-full" id="orientation" phx-hook="ScreenOrientation">
+  <%= if @orientation == "portrait" do %>
+    <div class="flex justify-center items-center w-full mb-3">
+      <div class="flex flex-col justify-center items-center rounded-md py-2 w-full shadow-xl bg-gray-100 dark:bg-erie-black-800 text-gray-900 dark:text-sage-500">
+        <!--Title-->
+        <div class="flex justify-center items-center my-2">
+          <p class="text-xl font-bold uppercase text-green-400 dark:text-red-400">
+            <i class="fad fa-info-circle"></i>
+            Rotate device
+          </p>
+        </div>
+        <p class="m-2 text-lg text-center">
+          Rotate device in landscape mode for better experience.
+        </p>
+        <div class="mb-4 text-lg ">
+          <i class="fad fa-lg fa-rectangle-portrait"></i>
+          <i class="fas fa-lg fa-arrow-right"></i>
+          <i class="fad fa-lg fa-rectangle-landscape"></i>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

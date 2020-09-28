@@ -1,0 +1,23 @@
+<div class="flex flex-col justify-center items-center mx-4 my-2 py-2">
+  <div class="flex flex-row items-center justify-between w-full rounded shadow bg-white dark:bg-erie-black-900 mb-2 px-6 py-2">
+    <div class="text-teal-800 dark:text-sage-500">
+      Browsing rooms
+    </div>
+
+    <%= if @current_user do %>
+      <%= link to: Routes.boiler_room_path(@conn, :new), class: "bg-teal-500 text-gray-200 cursor-pointer px-2 py-2 opacity-75 dark:bg-erie-black-600 dark:text-sage-500 hover:opacity-100" do %>
+        Create room <i class="fal fa-plus"></i>
+      <% end %>
+    <% else %>
+      <span>
+        <%= link "Sign in", to: Routes.session_path(@conn, :new), class: "cursor-pointer text-blue-700 dark:text-blue-500 hover:underline" %>
+        <span class="text-gray-900 dark:text-sage-500">
+          to create room
+        </span>
+      </span>
+    <% end %>
+  </div>
+
+  <!-- Rooms && Pagination -->
+  <%= live_render(@conn, IpartyWeb.Live.View.AllRooms, session: %{"user" => @current_user}) %>
+</div>

@@ -1,0 +1,29 @@
+<div class="flex items-center justify-between mx-4 my-2 rounded py-2 px-3 shadow bg-gray-100 dark:bg-erie-black-900">
+  <div class="flex flex-col w-full">
+    <h3 class="text-blue-800 dark:text-sage-500 tracking-wide mb-2"> Creators contact </h3>
+    <div class="flex flex-row w-full justify-around items-center">
+      <!-- Nikola Djordjevic -->
+      <div class="flex flex-col">
+        <h4 class="text-indigo-600 dark:text-indigo-200 font-thin mb-1 -ml-2">Programming</h4>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="https://www.instagram.com/regex.sh" rel="noopener noreferrer" target="_blank">Nikola Djordjevic Instagram</a>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="https://www.upwork.com/freelancers/~0100831dcd9e034b25" rel="noopener noreferrer" target="_blank">Nikola Djordjevic UpWork</a>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="https://www.linkedin.com/in/nikola-djordjevic-537700192/" rel="noopener noreferrer" target="_blank">Nikola Djordjevic LinkedIn</a>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="https://www.regex-sh.com/" rel="noopener noreferrer" target="_blank">Nikola Djordjevic portfolio website</a>
+      </div>
+      <!-- Stefan Ilic -->
+      <div class="flex flex-col">
+        <h4 class="text-indigo-600 dark:text-indigo-200 font-thin mb-1 -ml-2">Logo design</h4>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="https://www.instagram.com/samaelhimself/" rel="noopener noreferrer" target="_blank">Stefan Ilic Instagram</a>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="#">Stefan Ilic FREELANCE (TBD)</a>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="#">Stefan Ilic LinkedIn (TBD)</a>
+        <a class="text-blue-600 dark:text-blue-100 my-2 md:my-1 hover:underline" href="#">Stefan Ilic portfolio (TBD)</a>
+      </div>
+    </div>
+    <h3 class="text-blue-800 dark:text-sage-500 tracking-wide my-2"> Made with <i class="fas fa-heart text-red-600"></i> | Powered by </h3>
+    <div class="flex w-full justify-evenly md:justify-around lg:justify-start items-center px-5 select-none">
+      <img class="w-10 mr-0 lg:mr-4" src="/images/svg/elixir-logo.svg" alt="Elixir logo" title="Elixir">
+      <img class="w-10 mr-0 lg:mr-4" src="/images/svg/phoenix-logo.svg" alt="Phoenix logo" title="Phoenix">
+      <img class="w-10 mr-0 lg:mr-4" src="/images/svg/tailwind-logo.svg" alt="Tailwind logo" title="Tailwind">
+    </div>
+  </div>
+</div>

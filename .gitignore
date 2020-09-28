@@ -1,0 +1,22 @@
+# Don't include :)
+/_build/
+/cover/
+/deps/
+/doc/
+/.fetch
+erl_crash.dump
+*.ez
+*.gz
+*.sql*
+*.sh
+iparty*.tar
+npm-debug.log
+/assets/node_modules/
+/config/
+/.elixir_ls/
+/priv/plts/
+
+# Ignore all static except custom and models
+/priv/static/*
+!/priv/static/custom/
+!/priv/static/models/

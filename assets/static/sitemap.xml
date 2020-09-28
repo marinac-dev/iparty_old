@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://www.iparty.rs/</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/iparty</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/how-to-iparty</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/boiler-room</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/boiler-room/:slug</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/tos</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/faq</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/about</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/contact</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/privacy-policy</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/confirm-user</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/confirm-user/:token</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/sign-up</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/sign-in</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/reset-password</loc>
+</url>
+<url>
+	<loc>https://www.iparty.rs/reset-password/:token</loc>
+</url>
+</urlset>

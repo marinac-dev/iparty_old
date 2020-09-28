@@ -1,0 +1,104 @@
+<div class="bg-gray-100 flex flex-col w-full rounded shadow overflow-y-auto p-2 dark:bg-erie-black-900 dark:text-sage-500">
+  <%= if(@rooms == []) do %>
+    <h2 class="w-full text-center text-blue-300 dark:text-erie-black-500">Be the first one to create a BOILER ROOM!</h2>
+  <% end %>
+  <!-- Pro tip and search -->
+  <div class="flex flex-col lg:flex-row">
+    <!-- Pro tip -->
+    <div class="block w-full rounded border dark:border-sage-500 font-mono px-2 py-1 text-sm">
+      <span class="uppercase font-sans mr-1"> Pro tip: </span>
+      <span class="inline-block w-2 h-2 bg-red-600 rounded-full"></span> in corner signals that the room is offline, and <span class="inline-block w-2 h-2 bg-green-500 rounded-full"></span> means it's online.
+    </div>
+    <!-- Search -->
+    <div class="flex justify-center items-center flex-shrink ml-4">
+      <%= f = form_for :search_form, "#", [phx_change: :suggest, phx_submit: :search, class: "flex flex-row w-full my-2 lg:my-0"] %>
+        <%= text_input f, :search_input, autocomplete: "off", placeholder: "Search for a room...", list: "search-suggestions", class: "appearance-none border rounded-l pl-2 shadow focus:outline-none" %>
+        <datalist id="search-suggestions">
+          <%= for suggestion <- @suggestions do %>
+            <option value="<%= suggestion.name %>"><%= suggestion.name %></option>
+          <% end %>
+        </datalist>
+
+        <button type="submit" class="flex justify-center items-center appearance-none px-3 py-2 bg-gray-300 rounded-r-full shadow hover:bg-gray-400 focus:outline-none">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="flex flex-wrap h-screen overflow-y-auto justify-center items-start lg:justify-start">
+    <!-- Rooms -->
+    <%= for room <- @rooms do %>
+      <!-- Room -->
+      <div class="flex flex-col justify-between items-center w-64 mx-2 my-3 bg-gray-200 dark:bg-erie-black-700 rounded-md shadow p-2 mb-4 relative">
+        <!-- Name | Owner && Online -->
+        <div class="flex flex-row w-full justify-between mb-2">
+          <div>
+            <%= room.name %>
+          </div>
+          <!-- Owner | Online -->
+          <div class="flex flex-row">
+            <div class="text-yellow-500 mx-1">
+              <% owner = @current_user && @current_user.id == room.user_id %>
+              <%= if owner do %>
+                <i class="fas fa-crown" title="You are the owner"></i>
+              <% end %>
+            </div>
+            <div class="mx-1">
+              <%= case room.online do %>
+                <% true -> %>
+                  <span class="inline-block w-2 h-2 bg-green-500 rounded-full" title="Room online"></span>
+                <% false -> %>
+                  <span class="inline-block w-2 h-2 bg-red-500 rounded-full" title="Room offline"></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap w-full">
+          <%= for tag <- String.split(room.genre, ",") do %>
+            <div class="bg-gray-400 text-gray-800 text-sm m-1 p-1 rounded-lg dark:bg-erie-black-600 dark:text-sage-500"> <%= tag %> </div>
+          <% end  %>
+        </div>
+        <div class="flex justify-end items-center w-full my-1">
+          <%= if room.online do %>
+            <%= link "Join room", to: Routes.boiler_room_path(@socket, :show, room.slug),
+              class: "bg-blue-500 text-gray-900 rounded opacity-75 px-2 py-1 hover:opacity-100 hover:bg-blue-600 dark:bg-yellow dark:hover:bg-erie-black-500"%>
+          <% else %>
+            <%= if @current_user && room.user_id == @current_user.id do %>
+              <%= link "Join room", to: Routes.boiler_room_path(@socket, :show, room.slug),
+                class: "bg-blue-500 text-gray-900 rounded opacity-75 px-2 py-1 hover:opacity-100 hover:bg-blue-600 dark:bg-yellow dark:hover:bg-erie-black-500"%>
+            <% else %>
+              <button class="bg-red-500 opacity-50 text-gray-100 rounded px-2 py-1 cursor-default focus:outline-none">Join room</button>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!-- Pagination -->
+  <div class="flex flex-row h-10 w-full rounded bg-gray-300 mt-2">
+    <%= if @pagination.enabled do %>
+      <div class="flex flex-row w-full justify-center items-center">
+        <!-- First -->
+        <span class="w-8 h-8 mx-1 flex justify-center items-center bg-gray-200 rounded-l-lg cursor-pointer hover:bg-gray-400">
+          1
+        </span>
+        <span class="w-8 h-8 mx-1 flex justify-center items-center bg-gray-200 rounded cursor-pointer hover:bg-gray-400">
+          <i class="fal fa-chevron-double-left"></i>
+        </span>
+        <!-- Between -->
+        <%= for item <- @pagination.nav_between do %>
+          <span class="w-8 h-8 mx-1 flex justify-center items-center bg-gray-200 rounded cursor-pointer hover:bg-gray-400">
+            <%= item %>
+          </span>
+        <% end %>
+        <span class="w-8 h-8 mx-1 flex justify-center items-center bg-gray-200 rounded cursor-pointer hover:bg-gray-400">
+          <i class="fal fa-chevron-double-right"></i>
+        </span>
+        <!-- Last -->
+        <span class="w-8 h-8 mx-1 px-2 flex justify-center items-center bg-gray-200 rounded-r-lg cursor-pointer hover:bg-gray-400">
+          <%= @pagination.total_pages %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

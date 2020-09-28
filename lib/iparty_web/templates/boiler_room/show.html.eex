@@ -1,0 +1,1 @@
+<%= live_render(@conn, IpartyWeb.Live.View.BoilerRoom, session: %{"user" => @current_user, "room" => @room, "google" => @google}) %>

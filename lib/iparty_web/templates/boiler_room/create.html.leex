@@ -1,0 +1,84 @@
+<div class="flex flex-col justify-center items-center mx-4 my-2 py-2 px-3 rounded shadow bg-gray-100 dark:bg-erie-black-800">
+  <h1 class="w-full text-lg font-medium text-left text-indigo-500 dark:text-sage-500 my-4">BOILER ROOM</h1>
+
+  <!-- BOILER ROOM -->
+  <div class="flex flex-col lg:flex-row w-full justify-center lg:justify-around items-center mx-4 my-2 rounded py-2 px-3 shadow bg-gray-100 dark:bg-erie-black-800">
+    <!-- What/What/how? -->
+    <div class="flex flex-col text-gray-900 dark:text-gray-100 w-full lg:w-1/3">
+      <h2 class="font-medium">What are BOILER ROOMS?</h2>
+      <p class="my-1 pl-2">
+        iParty's BOILER ROOM is a virtual place where you and your
+        friends<span class="text-red-600">*</span> can listen to the same music.
+      </p>
+      <h2 class="font-medium mt-4">
+        What is BOILER ROOM good for?
+      </h2>
+      <p class="my-1 pl-2">
+        If you are outside with your friends<span class="text-red-600">*</span> and you
+        want to play some music and have fun, but you don't have speakers, iParty's
+        BOILER ROOM allow you to play music on multiple devices in sync.
+      </p>
+
+      <h2 class="font-medium mt-4">
+        How to use BOILER ROOMS?
+      </h2>
+      <p class="my-1">
+        <ul class="list-decimal pl-6">
+          <li class="mb-2">
+            Create BOILER ROOM
+          </li>
+          <li class="mb-2">
+            Share QR/URL to your friends/
+          </li>
+          <li class="mb-2">
+            Play music and enjoy!
+          </li>
+        </ul>
+      </p>
+
+      <p class="mt-4">
+        <span class="text-red-600">*</span> For those of you who don't have any friends, we are sorry! 😔
+        <br>
+        We are working on a new feature that will bring together people with the same musical taste. 😉
+      </p>
+    </div>
+
+    <!-- Create BOILER ROOM -->
+    <%= f = form_for @changeset, "#", id: "boiler_room-form", phx_submit: "save",
+      class: "flex flex-col justify-center items-center rounded-lg dark:text-sage-500 mb-4 py-3" %>
+
+      <div class="flex flex-col justify-between items-center py-3 px-5 rounded-md mb-4">
+        <div class="flex flex-col lg:flex-row justify-center items-center border dark:border-sage-500 rounded-md relative p-2 pt-4">
+          <%= label f, :room_name, class: "bg-gray-100 text-indigo-600 select-none text-left rounded absolute top-0 -mt-3 left-0 ml-4 px-2 dark:text-indigo-300 dark:bg-erie-black-800" %>
+          <%= text_input f, :name, placeholder: "eg. EDM night", autocomplete: "off",
+            class: "appearance-none rounded text-lg w-64 h-10 px-2 bg-gray-200 dark:bg-erie-black-500 dark:placeholder-current opacity-75 focus:opacity-100 focus:outline-none" %>
+        </div>
+        <!-- Error message -->
+        <%= case error_tag(f, :name) do %>
+          <% [] -> %>
+          <% message -> %>
+            <p class="mt-2 text-red-400 dark:text-red-300 text-xs italic uppercase"> <%= message %> </p>
+        <% end %>
+      </div>
+
+      <!-- Tag component -->
+      <%= live_component @socket, IpartyWeb.Live.Component.Tags, Map.merge(assigns, %{f: f, id: "tags"}) %>
+
+      <div class="flex flex-col justify-between items-center py-3 px-5 rounded-md mb-4">
+        <div class="flex flex-col lg:flex-row justify-center items-center border dark:border-sage-500 rounded-md relative p-2 pt-4">
+          <%= label f, :public_status, class: "bg-gray-100 text-indigo-600 select-none text-left rounded absolute top-0 -mt-3 left-0 ml-4 px-2 dark:text-indigo-300 dark:bg-erie-black-800" %>
+          <%= select f, :status, ["Public": "public", "Private": "private", "Invite only": "invite"],
+            class: "appearance-none rounded text-lg w-64 h-10 px-2 bg-gray-200 dark:bg-erie-black-500 dark:placeholder-current focus:outline-none" %>
+        </div>
+        <!-- Error message -->
+        <%= case error_tag(f, :status) do %>
+          <% [] -> %>
+          <% message -> %>
+            <p class="mt-2 text-red-400 dark:text-red-300 text-xs italic uppercase"> <%= message %> </p>
+        <% end %>
+      </div>
+
+      <input class="bg-gray-200 text-indigo-700 w-20 border rounded-md cursor-pointer opacity-75 hover:opacity-100 hover:bg-gray-300 hover:text-indigo-800 focus:outline-none" type="submit" value="Create" phx-disable-with="Creating...">
+    </form>
+  </div>
+</div>

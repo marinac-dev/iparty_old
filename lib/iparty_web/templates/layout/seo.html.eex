@@ -1,0 +1,15 @@
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@iparty_rs" />
+    <meta property="twitter:url" content="https://www.iparty.rs/">
+    <meta property="twitter:title" content="iParty - House parties made easy">
+    <meta property="twitter:description" content="iParty has a goal of making house parties less technical and more fun. Create, organise and realise your event with our help.">
+    <meta property="twitter:image" content="<%= Routes.static_path(@conn, "/images/favicon/twitter_card.png" ) %>" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="iParty - House parties made easy">
+    <meta property="og:description" content="iParty has a goal of making house parties less technical and more fun. Create, organise and realise your event with our help.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.iparty.rs/">
+    <meta property="og:image" content="<%= Routes.static_path(@conn, "/images/favicon/twitter_card.png") %>">
+    <meta property="og:site_name" content="iParty">
+    <meta property="og:locale" content="en_US">

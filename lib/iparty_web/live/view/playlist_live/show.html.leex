@@ -1,0 +1,37 @@
+<h1>Show Playlist</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, IpartyWeb.PlaylistLive.FormComponent,
+    id: @playlist.id,
+    title: @page_title,
+    action: @live_action,
+    playlist: @playlist,
+    return_to: Routes.playlist_show_path(@socket, :show, @playlist) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @playlist.name %>
+  </li>
+
+  <li>
+    <strong>Tags:</strong>
+    <%= @playlist.tags %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @playlist.content %>
+  </li>
+
+  <li>
+    <strong>Public:</strong>
+    <%= @playlist.public %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.playlist_show_path(@socket, :edit, @playlist), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.playlist_index_path(@socket, :index) %></span>

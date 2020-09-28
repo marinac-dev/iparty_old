@@ -1,0 +1,21 @@
+<div class="flex flex-col justify-between items-center shadow bg-gray-100 font-roboto dark:bg-erie-black-400 rounded-md w-64 h-56 m-2">
+  <!-- Image thumbnail -->
+  <div class="flex items-center justify-center">
+    <img src="<%= @item["snippet"]["thumbnails"]["medium"]["url"] %>" alt="Item image" class="rounded w-40 cursor-pointer border-2 border-transparent opacity-75 hover:opacity-100 hover:border-blue-400 dark:hover:border-white m-2" onclick="PlayVideoId('<%= @item["id"]["videoId"] %>')">
+  </div>
+  <!-- Title -->
+  <div class="text-sm w-11/12 break-words rounded cursor-pointer hover:text-blue-400 dark:hover:text-white m-2" onclick="PlayVideoId('<%= @item["id"]["videoId"] %>')">
+    <%= String.slice(HtmlEntities.decode(@item["snippet"]["title"]), 0..65) %>
+  </div>
+  <!-- Buttons -->
+  <div class="flex flex-row justify-center items-center w-full rounded-b-md bg-gray-300 dark:bg-erie-black-500">
+    <button class="bg-blue-500 text-gray-900 cursor-pointer rounded-full opacity-75 m-2 px-3 py-1 hover:opacity-100 focus:outline-none" onclick="PlayVideoId('<%= @item["id"]["videoId"] %>')">
+      Play <i class="fad fa-play-circle"></i>
+    </button>
+
+    <button value="<%= @item["id"]["videoId"] %>" phx-target="#plls" phx-click="pl-add"
+      class="bg-yellow-500 text-gray-900 cursor-pointer rounded-full opacity-75 m-2 px-3 py-1 hover:opacity-100 focus:outline-none">
+      Add to playlist <i class="fad fa-list-music"></i>
+    </button>
+  </div>
+</div>

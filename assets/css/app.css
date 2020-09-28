@@ -1,0 +1,10 @@
+/* purgecss start ignore */
+@import url(/home/kirito/Desktop/rc/iparty/assets/node_modules/nprogress/nprogress.css);
+@import url(/home/kirito/Desktop/rc/iparty/assets/css/icon.css);
+@import url(/home/kirito/Desktop/rc/iparty/assets/css/phoenix.css);
+@import url(/home/kirito/Desktop/rc/iparty/assets/css/custom.css);
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+/*# sourceMappingURL=app.css.map */

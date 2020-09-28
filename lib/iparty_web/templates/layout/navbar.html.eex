@@ -1,0 +1,110 @@
+<header class="flex flex-col lg:flex-row items-center justify-between mx-4 my-2 rounded py-2 px-3 shadow font-sans tracking-wide relative bg-gray-100 dark:bg-erie-black-900 dark:text-sage-500">
+  <div class="flex flex-row w-full lg:w-auto sm:w-full justify-between items-center">
+    <!-- Logo -->
+    <div>
+      <%= link to: Routes.page_path(@conn, :index) do %>
+        <img class="h-12" src="/images/logos/logo-white.png" alt="iParty logo" />
+      <% end %>
+    </div>
+    <!-- Burger menu -->
+    <div class="flex lg:hidden items-center justify-center p-2 text-2xl cursor-pointer" id="burger-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+  <!-- Navbar -->
+  <div class="justify-between items-center flex-grow w-full hidden flex-col lg:flex lg:flex-row" id="navbar-menu">
+
+    <!-- iParty Navigation -->
+    <div class="flex flex-col lg:flex-row flex-grow items-start lg:items-center justify-evenly">
+      <%= link "Home", to: Routes.page_path(@conn, :index), class: "text-lg border-0 border-b-2 border-transparent text-blue-800 dark:text-sage-500 px-2 my-1 mb-3 lg:m-0 hover:border-gray-800 dark:hover:border-sage-500" %>
+      <%= link "iParty", to: Routes.page_path(@conn, :iparty), class: "text-lg border-0 border-b-2 border-transparent text-blue-800 dark:text-sage-500 px-2 my-1 mb-3 lg:m-0 hover:border-gray-800 dark:hover:border-sage-500" %>
+      <div class="my-1 mb-3 lg:m-0">
+        <%= link "How to: iParties 101", to: Routes.page_path(@conn, :how_to), class: "text-lg border-0 border-b-2 border-transparent text-blue-800 dark:text-sage-500 px-2 hover:border-gray-800 dark:hover:border-sage-500" %>
+        <sup class="bg-yellow-500 text-gray-900 rounded-full text-xs font-mono px-2 cursor-pointer">Soon</sup>
+      </div>
+      <%= link "iParty BOILER ROOM", to: Routes.boiler_room_path(@conn, :index), class: "text-lg border-0 border-b-2 border-transparent text-blue-800 dark:text-sage-500 my-1 mb-3 lg:m-0 px-2 hover:border-gray-800 dark:hover:border-sage-500" %>
+      <div class="dropdown inline-block relative">
+        <button class="flex flex-row items-center justify-center text-blue-800 dark:text-sage-500 px-2 text-lg">
+          <span class="mr-1">More</span>
+          <!-- Arrow down -->
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+          </svg>
+        </button>
+        <ul class="dropdown-menu w-40 lg:absolute lg:shadow lg:hidden bg-gray-100 dark:bg-erie-black-900 text-gray-900 dark:text-sage-500 pt-2 rounded-lg z-10">
+          <li class="cursor-pointer px-4 py-2 hover:bg-gray-200 dark:hover:bg-sage-500 dark:hover:text-erie-black-800 rounded-t">
+            <%= link "FAQ", to: Routes.page_path(@conn, :faq), class: "block w-full" %>
+          </li>
+          <li class="cursor-pointer px-4 py-2 hover:bg-gray-200 dark:hover:bg-sage-500 dark:hover:text-erie-black-800">
+            <%= link "About", to: Routes.page_path(@conn, :about), class: "block w-full" %>
+          </li>
+          <li class="cursor-pointer px-4 py-2 hover:bg-gray-200 dark:hover:bg-sage-500 dark:hover:text-erie-black-800">
+            <%= link "Contact", to: Routes.page_path(@conn, :contact), class: "block w-full" %>
+          </li>
+          <li class="cursor-pointer px-4 py-2 hover:bg-gray-200 dark:hover:bg-sage-500 dark:hover:text-erie-black-800">
+            <%= link "TOS", to: Routes.page_path(@conn, :tos), class: "block w-full" %>
+          </li>
+          <li class="cursor-pointer px-4 py-2 hover:bg-gray-200 dark:hover:bg-sage-500 dark:hover:text-erie-black-800 rounded-b-lg">
+            <%= link "Privacy policy", to: Routes.page_path(@conn, :privacy), class: "block w-full" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- iParty Sign in | Sign up -->
+    <div class="flex items-center justify-start lg:justify-end">
+      <%= if @current_user do %>
+        <div class="dropdown cursor-pointer w-full">
+          <div class="flex flex-row justify-start lg:justify-center items-center">
+            <img src="data:image/png;base64,<%= @user_info.bitmoji %>" alt="Bitmoji avatar" class="bg-gray-100 h-10 rounded-lg mr-2">
+            <span> <%= @user_info.name %> </span>
+          </div>
+          <ul class="dropdown-menu bg-gray-100 text-gray-900 lg:mx-auto w-full lg:w-40 right-0 lg:rounded-b-lg lg:absolute lg:shadow lg:hidden z-10 pt-2 dark:bg-erie-black-900 dark:text-sage-500">
+            <!-- Profile -->
+            <li class="hover:bg-gray-200 cursor-pointer tracking-wider dark:hover:text-erie-black-900 dark:hover:bg-sage-500">
+              <%= link to: Routes.page_path(@conn, :profile), class: "flex flex-row justify-between items-center px-4 py-2" do %>
+                <span> Profile </span>
+                <i class="fal fa-user-circle mr-1 opacity-50"></i>
+              <% end %>
+            </li>
+            <!-- Playlists -->
+            <li class="hover:bg-gray-200 cursor-pointer tracking-wider dark:hover:text-erie-black-800 dark:hover:bg-sage-500">
+              <%= link to: Routes.playlist_index_path(@conn, :index), class: "flex flex-row justify-between items-center px-4 py-2" do %>
+                <span> Playlists </span>
+                <i class="fad fa-list-music mr-1 opacity-50"></i>
+              <% end %>
+            </li>
+            <!-- Boiler Rooms -->
+            <li class="hover:bg-gray-200 cursor-pointer tracking-wider dark:hover:text-erie-black-800 dark:hover:bg-sage-500">
+              <%= link to: Routes.boiler_room_path(@conn, :user_index), class: "flex flex-row justify-between items-center px-4 py-2" do %>
+                <span> Rooms </span>
+                <i class="fad fa-turntable mr-1 opacity-50"></i>
+              <% end %>
+            </li>
+            <!-- Settings -->
+            <li class="hover:bg-gray-200 cursor-pointer tracking-wider dark:hover:text-erie-black-800 dark:hover:bg-sage-500">
+              <%= link to: Routes.settings_path(@conn, :edit), class: "flex flex-row justify-between items-center px-4 py-2" do %>
+                <span> Settings </span>
+                <i class="fal fa-cog mr-1 opacity-50"></i>
+              <% end %>
+            </li>
+            <hr class="border-gray-300 dark:border-sage-500">
+            <li class="cursor-pointer tracking-wider lg:rounded-b-lg text-red-600 hover:bg-red-200">
+              <%= link to: Routes.session_path(@conn, :delete), data_confirm: "Are you sure?", method: :delete, class: "flex flex-row justify-between items-center px-4 py-2" do %>
+                <span> Sign out </span>
+                <i class="fal fa-sign-out-alt mr-1 opacity-50"></i>
+              <% end  %>
+            </li>
+          </ul>
+        </div>
+      <% else %>
+        <%= link to: Routes.registration_path(@conn, :new), class: "mx-2 px-2 py-1 text-lg cursor-pointer border-0 border-b-2 border-green-500 dark:border-green-200 text-green-700 dark:text-green-500 hover:bg-green-100" do %>
+          Sign up <i class="fal fa-user-plus"></i>
+        <% end %>
+        <%= link to: Routes.session_path(@conn, :new), class: "mx-2 px-2 py-1 text-lg cursor-pointer border-0 border-b-2 border-blue-500 dark:border-blue-200 text-blue-700 dark:text-blue-500 hover:bg-blue-100" do %>
+          Sign in <i class="fal fa-sign-in-alt"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,1 @@
+<%= live_render(@conn, IpartyWeb.Live.View.NewRoom, session: %{"user" => @current_user}) %>

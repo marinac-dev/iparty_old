@@ -1,0 +1,29 @@
+<div class="w-full flex flex-col lg:flex-row justify-center items-center bg-gray-300 dark:bg-erie-black-800 rounded-md p-2">
+  <!-- Player, search & info -->
+  <div class="flex flex-col lg:flex-row w-full">
+    <!-- Player & search -->
+    <div class="flex flex-col lg:flex-row w-full lg:w-2/3">
+      <!-- Player -->
+      <div class="flex justify-center items-center w-full lg:w-2/3">
+        <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Visitor.Player, id: "guest-player" %>
+      </div>
+
+      <!-- Search videos to suggest -->
+      <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Visitor.Search, assigns %>
+    </div>
+
+    <!-- Info -->
+    <div class="flex flex-col lg:flex-row justify-center items-center order-1 lg:order-none w-full lg:w-1/3">
+      Current viewers: <%= live_render(@socket, IpartyWeb.Live.Component.BoilerRoom.Comon.UsersOnline, [id: "online-users-component", session: %{"room" => @room}]) %>
+    </div>
+  </div>
+
+  <!-- Playlist -->
+  <div>
+  </div>
+
+</div>
+<div class="bg-gray-300 dark:bg-erie-black-800 rounded-md p-2">
+
+<!-- Playlist -->
+<%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Visitor.Playlist %>

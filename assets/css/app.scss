@@ -1,0 +1,11 @@
+@import "./icon.css";
+@import "./custom.css";
+@import "./phoenix.css";
+@import "../node_modules/nprogress/nprogress.css";
+
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;

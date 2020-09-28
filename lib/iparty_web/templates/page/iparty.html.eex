@@ -1,0 +1,2 @@
+<%= live_render(@conn, IpartyWeb.Live.View.Iparty, session: %{"current_user" => @current_user, "google" => @google}) %>
+<link rel="stylesheet" href="<%= Routes.static_path(@conn, "/custom/css/player.css") %>"/>

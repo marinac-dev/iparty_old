@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Primary Meta Tags -->
+    <title>iParty - House parties made easy</title>
+    <meta name="title" content="iParty - House parties made easy">
+    <meta name="keywords" content="iParty, iParty rs, IParty, IParty rs, iparty, iparty rs">
+    <meta name="description" content="iParty has a goal of making house parties less technical and more fun. Create, organise and realise your event with our help.">
+    <%= render("seo.html", conn: @conn) %>
+    <%= render("favicon.html", conn: @conn) %>
+    <%= csrf_meta_tag() %>
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" />
+    <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body >
+    <%= render("navbar.html", assigns) %>
+    <%= @inner_content %>
+    <%= render("footer.html") %>
+    <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

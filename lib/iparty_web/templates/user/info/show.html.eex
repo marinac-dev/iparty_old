@@ -1,0 +1,23 @@
+<h1>Show User info</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @user_info.name %>
+  </li>
+
+  <li>
+    <strong>Gender:</strong>
+    <%= @user_info.gender %>
+  </li>
+
+  <li>
+    <strong>Bitmoji:</strong>
+    <%= @user_info.bitmoji %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.info_path(@conn, :edit, @user_info) %></span>
+<span><%= link "Back", to: Routes.info_path(@conn, :index) %></span>

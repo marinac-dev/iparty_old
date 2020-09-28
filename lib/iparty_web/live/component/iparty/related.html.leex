@@ -1,0 +1,5 @@
+<div class="flex flex-wrap justify-center items-start overflow-y-auto my-2 h-64 lg:h-128" id="related-videos">
+  <%= for video <- @related do %>
+    <%= live_component @socket, IpartyWeb.Live.Component.Iparty.RelatedItem, video: video %>
+  <% end %>
+</div>

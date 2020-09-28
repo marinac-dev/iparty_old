@@ -1,0 +1,8 @@
+<div class="flex flex-col justify-evenly items-center h-screen rounded shadow bg-gray-100 text-gray-900 dark:bg-erie-black-800 dark:text-sage-500 mx-4 my-2 py-2 px-10">
+  <div class="w-full text-center">
+    <h1 class="text-indigo-600 text-3xl lg:text-5xl uppercase">
+      Under construction!
+    </h1>
+  </div>
+  <img src="/images/svg/under-construction.svg" alt="Under construction">
+</div>

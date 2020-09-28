@@ -1,0 +1,20 @@
+<div class="flex flex-col justify-center items-start lg:flex-row w-full">
+  <!-- (Player Search) | Playlist  -->
+  <div class="flex flex-col justify-center items-center w-full lg:w-2/3">
+    <!-- Player | Search -->
+    <div class="flex flex-col justify-center items-center lg:flex-row w-full bg-gray-300 dark:bg-erie-black-800 rounded-md p-2">
+      <!-- Player -->
+      <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Owner.Player, Map.merge(assigns, %{id: "br-player"}) %>
+      <!-- Search -->
+      <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Owner.Search, Map.merge(assigns, %{id: :search}) %>
+    </div>
+    <!-- Playlist -->
+    <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Playlist, Map.merge(assigns, %{id: :playlist}) %>
+  </div>
+
+  <!-- Room info | Tip  -->
+  <div class="flex flex-col mx-4 my-3 lg:mt-0 lg:w-1/3">
+    <!-- Room info -->
+    <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Owner.RoomInfo, assigns %>
+  </div>
+</div>

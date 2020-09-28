@@ -1,0 +1,9 @@
+<div class="flex flex-col w-full justify-center bg-gray-300 dark:bg-erie-black-800 rounded shadow mt-4 px-2" id="plls" >
+  <%= live_component @socket, IpartyWeb.Live.Component.Iparty.Playhead, Map.merge(assigns, %{id: :playlist_header}) %>
+  <div class="flex flex-row h-64 justify-start items-center overflow-y-auto py-4 pl-4">
+    <!-- Playlist items -->
+    <%= for playitem <- @playlist.play_items do %>
+      <%= live_component @socket, IpartyWeb.Live.Component.Iparty.Playitem, Map.merge(assigns, %{id: playitem.uuid, playitem: playitem}) %>
+    <% end %>
+  </div>
+</div>

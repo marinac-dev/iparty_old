@@ -1,0 +1,1 @@
+<%= live_render(@conn, IpartyWeb.Live.View.Index, session: %{"current_user" => @current_user, "google" => @google}) %>

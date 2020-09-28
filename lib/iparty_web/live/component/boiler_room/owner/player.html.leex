@@ -1,0 +1,38 @@
+<div class="flex justify-center items-center w-full lg:w-2/3" id="room-player" phx-update="ignore">
+  <div class="flex flex-col w-full lg:w-3/4 shadow-md rounded-md items-center justify-center overflow-hidden relative" id="player_awning" data-content="">
+    <!-- Video Player -->
+    <div class="w-full pointer-events-none" id="yt-player" phx-hook="BoilerPlayer"></div>
+
+    <!-- Video Controlls -->
+    <div phx-hook="BoilerPlayerSettings" id="br-player-controlls" class="flex flex-row justify-around items-center w-11/12 shadow rounded bg-gray-200 px-2 py-1 my-2">
+      <div class="flex flex-row justify-start items-center">
+        <!-- Play next song -->
+        <button id="br-prev" type="button" class="flex justify-center items-center flex-grow-0 text-center w-6 h-6 rounded-md bg-gray-500 text-indigo-700 focus:outline-none mx-1">
+          <i class="fad fa-backward"></i>
+        </button>
+        <!-- Play | pause streaming song -->
+        <button id="br-play" type="button" class="flex justify-center items-center flex-grow-0 text-center w-6 h-6 rounded-md bg-gray-500 text-indigo-700 focus:outline-none mx-1">
+          <i class="fad fa-play"></i>
+        </button>
+        <!-- Stop song -->
+        <button id="br-stop" type="button" class="flex justify-center items-center flex-grow-0 text-center w-6 h-6 rounded-md bg-gray-500 text-indigo-700 focus:outline-none mx-1">
+          <i class="fad fa-stop"></i>
+        </button>
+        <!-- Play next song -->
+        <button id="br-next" type="button" class="flex justify-center items-center flex-grow-0 text-center w-6 h-6 rounded-md bg-gray-500 text-indigo-700 focus:outline-none mx-1">
+          <i class="fad fa-forward"></i>
+        </button>
+      </div>
+
+      <!-- Duration Seeker -->
+      <div class="mx-2">
+        <input type="range" min="0" max="100" step="0.1" id="br-seeker">
+      </div>
+
+      <!-- Volume slider -->
+      <div id="br-volume" class="mx-2">
+        <input type="range" name="" id="">
+      </div>
+    </div>
+  </div>
+</div>

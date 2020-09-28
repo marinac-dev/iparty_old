@@ -1,0 +1,30 @@
+<h1>Listing User infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Bitmoji</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user_info <- @user_infos do %>
+    <tr>
+      <td><%= user_info.name %></td>
+      <td><%= user_info.gender %></td>
+      <td><%= user_info.bitmoji %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.info_path(@conn, :show, user_info) %></span>
+        <span><%= link "Edit", to: Routes.info_path(@conn, :edit, user_info) %></span>
+        <span><%= link "Delete", to: Routes.info_path(@conn, :delete, user_info), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New User info", to: Routes.info_path(@conn, :new) %></span>

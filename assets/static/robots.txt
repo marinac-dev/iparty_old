@@ -1,0 +1,10 @@
+# iParty robots.txt
+
+User-agent: *
+Disallow: /admin/
+
+User-agent: Googlebot
+Disallow: /images/
+
+User-agent: Mediapartners-Google
+Disallow: /

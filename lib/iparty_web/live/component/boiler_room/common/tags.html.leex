@@ -1,0 +1,22 @@
+<div class="flex flex-col justify-between items-center py-3 px-5 rounded-md mb-4">
+  <div class="flex flex-col lg:flex-row justify-center items-center border dark:border-sage-500 rounded-md relative p-2 pt-4" id="tags">
+    <%= label @f, :music_genre, class: "bg-gray-100 text-indigo-600 select-none text-left rounded absolute top-0 -mt-3 left-0 ml-4 px-2 dark:text-indigo-300 dark:bg-erie-black-800" %>
+    <%= text_input @f, :genre, autocomplete: "off", placeholder: "eg. hip hop", phx_hook: "BoilerRoomTag", id: "tag-input",
+      class: "appearance-none rounded text-lg w-64 h-10 px-2 bg-gray-200 dark:bg-erie-black-500 dark:placeholder-current opacity-75 focus:opacity-100 focus:outline-none" %>
+    </div>
+    <p class="text-sm text-indigo-500 opacity-75 dark:text-sage-500">
+      Enter comma separated values.
+    </p>
+  <!-- Error message -->
+  <%= case error_tag(@f, :genre) do %>
+    <% [] -> %>
+    <% message -> %>
+      <p class="mt-2 text-red-400 dark:text-red-300 text-xs italic uppercase"> <%= message %> </p>
+  <% end %>
+
+  <div class="w-full flex flex-wrap p-1">
+    <%= for tag <- @tags do %>
+      <div class="bg-gray-400 text-gray-800 text-sm m-1 p-1 rounded-lg"> <%= tag %> </div>
+    <% end %>
+  </div>
+</div>

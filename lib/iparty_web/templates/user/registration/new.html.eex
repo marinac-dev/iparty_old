@@ -1,0 +1,59 @@
+<div class="flex flex-col py-10 items-center justify-center mx-4">
+  <!-- Traditional sign up -->
+  <%= form_for @changeset, Routes.registration_path(@conn, :create),
+    [class: "flex flex-col items-center justify-center w-full md:w-auto py-2 bg-gray-100 dark:bg-erie-black-700 dark:text-sage-500 rounded-lg text-lg lg:py-10 lg:px-20"], fn f -> %>
+    <h2 class="uppercase font-bold text-center text-blue-600 dark:text-sage-500">Sign up</h2>
+    <img src="/images/logos/sign-in.png" alt="iParty logo" class="w-48 lg:w-56 my-6 rounded-lg">
+
+    <%= if @changeset.action do %>
+      <div class="my-4 border border-red-500 px-3 py-2 rounded-md" role="alert">
+        <p class="text-red-500 text-xl">
+          Please check the errors below.
+        </p>
+      </div>
+    <% end %>
+
+    <!-- E-mail -->
+    <div class="flex flex-col justify-between items-center py-3 px-5 rounded-md mb-4">
+      <div class="flex flex-col lg:flex-row justify-center items-center border dark:border-sage-500 rounded-md relative p-2 pt-4">
+        <%= label f, :email, class: "bg-gray-100 text-indigo-600 select-none text-left absolute top-0 -mt-3 left-0 ml-4 px-2 dark:text-indigo-300 dark:bg-erie-black-700" %>
+        <%= email_input f, :email, required: true, placeholder: "Type here...",
+          class: "appearance-none rounded text-lg w-64 h-10 px-2 bg-gray-200 dark:bg-erie-black-500 dark:placeholder-current opacity-75 focus:opacity-100 focus:outline-none" %>
+      </div>
+      <!-- Error message -->
+      <%= if error_tag(f, :email) != [] do %>
+        <p class="mt-2 text-red-400 dark:text-red-300 text-xs italic uppercase">
+          <%= error_tag(f, :email) %>
+        </p>
+      <% end %>
+    </div>
+
+    <!-- Password -->
+    <div class="flex flex-col justify-between items-center py-3 px-5 rounded-md mb-4">
+      <div class="flex flex-col lg:flex-row justify-center items-center border dark:border-sage-500 rounded-md relative p-2 pt-4">
+        <%= label f, :password, class: "bg-gray-100 text-indigo-600 select-none text-left absolute top-0 -mt-3 left-0 ml-4 px-2 dark:text-indigo-300 dark:bg-erie-black-700" %>
+        <%= password_input f, :password, required: true, autocomplete: "new-password", placeholder: "Type here...",
+          class: "appearance-none rounded text-lg w-64 h-10 px-2 bg-gray-200 dark:bg-erie-black-500 dark:placeholder-current opacity-75 focus:opacity-100 focus:outline-none" %>
+      </div>
+      <!-- Error message -->
+      <%= if error_tag(f, :password) != [] do %>
+        <p class="mt-2 text-red-400 dark:text-red-300 text-xs italic uppercase">
+          <%= error_tag(f, :password) %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="w-64 text-sm text-indigo-500">
+      By signing up you confirm that you agree with our
+      <a target="_blank" href="/tos" class="text-blue-500 underline">TOS</a> and
+      <a target="_blank" href="/privacy-policy" class="text-blue-500 underline">Privacy Policy</a>
+    </div>
+
+    <input type="submit" value="Sign up" class="iparty-sbtn text-gray-300 font-medium tracking-widest uppercase font-roboto text-xl rounded-full cursor-pointer my-4 px-4 py-1 focus:outline-none">
+  <% end  %>
+
+  <div class="flex flex-col items-center justify-center px-10 py-2 mx-4 my-10 bg-white rounded-lg text-lg lg:py-10 lg:px-20 dark:bg-erie-black-700">
+    <%= link "Sign in", to: Routes.session_path(@conn, :new), class: "mx-2 px-2 py-1 text-lg cursor-pointer border-b border-blue-500 dark:border-blue-300 text-blue-700 dark:text-sage-500 hover:border hover:bg-blue-100 dark:hover:bg-silver-100 dark:hover:text-rich-black mb-2" %>
+    <%= link "Forgot your password?", to: Routes.reset_password_path(@conn, :new), class: "mx-2 px-2 py-1 text-lg cursor-pointer border-b border-yellow-500 dark:border-yellow-300 dark:text-sage-500 hover:border hover:bg-yellow-200 dark:hover:bg-silver-100 dark:hover:text-rich-black" %>
+  </div>
+</div>

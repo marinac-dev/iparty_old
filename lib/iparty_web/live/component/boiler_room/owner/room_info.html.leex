@@ -1,0 +1,37 @@
+<div class="flex flex-col flex-wrap px-6 py-4 rounded-md bg-gray-100 dark:bg-erie-black-800 shadow">
+  <div class="flex flex-col justify-start items-baseline text-indigo-700 dark:text-sage-500">
+    <span class="text-lg tracking-wider mr-2">
+      <%= @room.name %>
+    </span>
+    <div class="mr-2 text-sm opacity-75 pl-1">
+      <span class="font-medium text-indigo-800 dark:text-sage-700">by</span>
+      <span class="">
+        <%= @room.user.email %>
+      </span>
+    </div>
+  </div>
+
+  <!-- Users online -->
+  <%= live_render(@socket, IpartyWeb.Live.Component.BoilerRoom.Comon.UsersOnline, [id: "online-users-component", session: %{"room" => @room}]) %>
+  <!-- Toogle room online status -->
+  <%= live_component @socket, IpartyWeb.Live.Component.BoilerRoom.Owner.ToogleLive, Map.merge(assigns, %{id: "toogle-live"}) %>
+
+  <div class="flex flex-col mt-1">
+    <span class="dark:text-sage-500">Genre</span>
+    <div class="flex flex-wrap">
+      <%= for tag <- String.split(@room.genre, ",") do %>
+        <div class="bg-gray-400 text-gray-800 dark:bg-erie-black-400 dark:text-sage-300 text-sm m-1 p-1 rounded-lg"> <%= tag %> </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%
+    path = Routes.boiler_room_path(@socket, :show, @room.slug)
+    host = Application.get_env(:iparty, :qrcode).url_dev
+    url = host <> path
+    svg_content = Iparty.Base.Generator.url_to_svg(url)
+  %>
+  <div id="share-room-qr" class="flex justify-center items-center">
+    <%= raw(svg_content)%>
+  </div>
+</div>
