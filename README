@@ -1,3 +1,9 @@
++++ OLD REPO +++
+
+I am currently working on a new version, complete revrite with React on front-end and Elixir API theMarinac/iparty-v2
+
++++ OLD REPO +++
+
 == iparty.rs ==
 iParty is an web app that lets you play, search, an queue YouTube videos on low-spec PCs, laptops, phones, Smart TVs and other "smart devices" that support modern WEB technologies.
 WIP: Besides that it allows you to create rooms where people can connect multiple device and play music in sync over internet.
